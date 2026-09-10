@@ -4,6 +4,19 @@ Collab Editor is a self-contained full-stack collaborative document editor for l
 
 This project is designed to run from a normal Windows machine in VS Code. It does not require any hosted development platform or platform-specific services.
 
+## Key Features
+
+- Real-time collaborative document editing with multiple users
+- WebSocket-based live synchronization
+- Last-Write-Wins (LWW) conflict resolution for concurrent edits
+- Live user presence and active-user indicators
+- Live remote cursor and selection updates
+- Automatic document saving to PostgreSQL
+- Document creation, listing, and persistence
+- Activity feed for document collaboration
+- Responsive React/Vite interface
+- TypeScript-based frontend and backend
+
 ## 1. Prerequisites
 
 Install these before opening the project:
@@ -167,6 +180,12 @@ Editing uses these WebSocket operations:
 - `cursor`: publishes the current selection range
 
 Each operation has a timestamp, client ID, and operation ID. The server compares these deterministically and broadcasts accepted operations to every other client in the room. This preserves concurrent inserts instead of replacing the entire document with one client's full payload.
+
+### Conflict resolution
+
+The editor uses a Last-Write-Wins (LWW) approach for concurrent operations. Each operation carries a timestamp, client ID, and unique operation ID. When concurrent operations are received, the server applies a deterministic ordering based on these values so that all connected clients converge toward the same document state.
+
+This approach allows multiple users to type at the same time without locking the editor or replacing the entire document with another user's latest full-text payload.
 
 ## Project structure
 
