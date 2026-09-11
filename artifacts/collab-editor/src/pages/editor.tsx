@@ -363,9 +363,13 @@ export default function Editor() {
       if (disposed) return;
       setConnection("connecting");
       const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-      const socket = new WebSocket(
-        `${protocol}://${window.location.host}/api/ws`,
-      );
+const apiUrl = import.meta.env.VITE_API_URL;
+
+const socket = new WebSocket(
+  apiUrl
+    ? `${apiUrl.replace(/^http/, "ws")}/api/ws`
+    : `${protocol}://${window.location.host}/api/ws`,
+);
       socketRef.current = socket;
       socket.onopen = () => {
         setConnection("connected");

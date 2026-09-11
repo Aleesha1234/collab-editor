@@ -28,7 +28,6 @@ export default defineConfig({
       mode: "split",
       baseUrl: "/api",
       clean: true,
-      prettier: true,
       override: {
         fetch: {
           includeHttpResponseReturnType: false,
@@ -54,7 +53,6 @@ export default defineConfig({
       schemas: { path: "generated/types", type: "typescript" },
       mode: "split",
       clean: true,
-      prettier: true,
       override: {
         zod: {
           coerce: {
