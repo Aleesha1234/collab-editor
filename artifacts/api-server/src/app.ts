@@ -25,7 +25,11 @@ app.use(
     },
   }),
 );
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://collab-editor-ten-zeta.vercel.app",
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
