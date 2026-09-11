@@ -11,11 +11,17 @@ export type AuthTokenGetter = () => Promise<string | null> | string | null;
 const NO_BODY_STATUS = new Set([204, 205, 304]);
 const DEFAULT_JSON_ACCEPT = "application/json, application/problem+json";
 
+const viteEnv = (import.meta as ImportMeta & {
+  env?: Record<string, string | undefined>;
+}).env;
+
+const productionApiUrl = viteEnv?.VITE_API_URL ?? null;
+
 // ---------------------------------------------------------------------------
 // Module-level configuration
 // ---------------------------------------------------------------------------
 
-let _baseUrl: string | null = null;
+let _baseUrl: string | null = productionApiUrl;
 let _authTokenGetter: AuthTokenGetter | null = null;
 
 /**
