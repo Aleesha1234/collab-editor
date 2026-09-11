@@ -27,7 +27,7 @@ app.use(
 );
 app.use(
   cors({
-    origin: "https://collab-editor-ten-zeta.vercel.app",
+    origin: "https://collab-editor-1ghct0bca-aleesha1.vercel.app",
   }),
 );
 app.use(express.json());
