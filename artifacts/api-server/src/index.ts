@@ -18,6 +18,7 @@ if (Number.isNaN(port) || port <= 0) {
 
 const server = createServer(app);
 attachCollaborationServer(server);
+export default server;
 
 server.on("error", (err) => {
   logger.error({ err }, "Error listening on port");
