@@ -269,3 +269,6 @@ Then run:
 pnpm install
 pnpm run typecheck
 ```
+## Demonstration Video
+
+[Watch the 2–4 Minute Project Demonstration](https://drive.google.com/file/d/1jItpPBPZ7uy6CmTcjf_8oUd_d6gkioED/view?usp=sharing)
